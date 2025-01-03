@@ -59,6 +59,9 @@ RUN apt-get update -y \
 
     RUN chown -R runner /home/runner/.azure 
 
+    RUN echo 'echo ${GITHUB_TOKEN}' > /home/runner/.git-askpass && \
+        chmod +x /home/runner/.git-askpass && \
+
     RUN echo PATH=$PATH >> /runnertmp/.env
 
     USER runner
